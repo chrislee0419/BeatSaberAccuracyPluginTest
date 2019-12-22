@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace TestBeatSaberPlugin
@@ -12,13 +9,13 @@ namespace TestBeatSaberPlugin
     {
         public NoteType noteType;
         public NoteCutInfo noteCutInfo;
-        public AfterCutScoreBuffer afterCutScoreBuffer;
+        public SaberSwingRatingCounter saberSwingRatingCounter;
 
-        public CutScoreTuple(NoteType noteType, NoteCutInfo noteCutInfo, AfterCutScoreBuffer afterCutScoreBuffer)
+        public CutScoreTuple(NoteType noteType, NoteCutInfo noteCutInfo, SaberSwingRatingCounter saberSwingRatingCounter)
         {
             this.noteType = noteType;
             this.noteCutInfo = noteCutInfo;
-            this.afterCutScoreBuffer = afterCutScoreBuffer;
+            this.saberSwingRatingCounter = saberSwingRatingCounter;
         }
     }
 
@@ -56,10 +53,8 @@ namespace TestBeatSaberPlugin
         {
             if (data.noteType == NoteType.Bomb || !cutInfo.allIsOK) return;
 
-            AfterCutScoreBuffer afterCutScoreBuffer = new AfterCutScoreBuffer(cutInfo, cutInfo.afterCutSwingRatingCounter, 1);
-
-            afterCutScoreBuffer.didFinishEvent = OnCutFinished;
-            cstList.Add(new CutScoreTuple(data.noteType, cutInfo, afterCutScoreBuffer));
+            cutInfo.swingRatingCounter.didFinishEvent += OnCutFinished;
+            cstList.Add(new CutScoreTuple(data.noteType, cutInfo, cutInfo.swingRatingCounter));
 
             //int beforeCut, afterCut, cutDistance;
             //ScoreController.ScoreWithoutMultiplier(cutInfo, null, out beforeCut, out afterCut, out cutDistance);
@@ -70,12 +65,12 @@ namespace TestBeatSaberPlugin
             //    Plugin.rSaberCut.Add(new HitScore(beforeCut, afterCut, cutDistance));
         }
 
-        private void OnCutFinished(AfterCutScoreBuffer afterCutScoreBuffer)
+        private void OnCutFinished(SaberSwingRatingCounter saberSwingRatingCounter)
         {
-            CutScoreTuple cst = cstList.Find((elem) => elem.afterCutScoreBuffer == afterCutScoreBuffer);
+            CutScoreTuple cst = cstList.Find((elem) => elem.saberSwingRatingCounter == saberSwingRatingCounter);
 
             int beforeCut, afterCut, cutDistance;
-            ScoreController.ScoreWithoutMultiplier(cst.noteCutInfo, cst.noteCutInfo.afterCutSwingRatingCounter, out beforeCut, out afterCut, out cutDistance);
+            ScoreController.RawScoreWithoutMultiplier(cst.noteCutInfo, out beforeCut, out afterCut, out cutDistance);
 
             if (cst.noteType == NoteType.NoteA)
                 Plugin.lSaberCut.Add(new HitScore(beforeCut - cutDistance, afterCut, cutDistance));

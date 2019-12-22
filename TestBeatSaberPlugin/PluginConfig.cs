@@ -4,38 +4,40 @@ namespace TestBeatSaberPlugin
 {
     internal class PluginConfig
     {
-        private static Config config = new Config("AccuracyAverageTestPlugin");
+        private static Config config = new Config("BS-Test-Plugin");
+        private const string AccuracyAverageSection = "AccuracyAverage";
+
         public static bool enabled 
         {
             get
             {
-                return config.GetBool("AccuracyAverageTestPlugin", "Enabled", true, true);
+                return config.GetBool(AccuracyAverageSection, "Enabled", true, true);
             }
             set
             {
-                config.SetBool("AccuracyAverageTestPlugin", "Enabled", value);
+                config.SetBool(AccuracyAverageSection, "Enabled", value);
             }
         }
         public static bool accDisplayBoth
         {
             get
             {
-                return config.GetBool("AccuracyAverageTestPlugin", "Accuracy Display Combined", true, true);
+                return config.GetBool(AccuracyAverageSection, "Accuracy Display Combined", true, true);
             }
             set
             {
-                config.SetBool("AccuracyAverageTestPlugin", "Accuracy Display Combined", value);
+                config.SetBool(AccuracyAverageSection, "Accuracy Display Combined", value);
             }
         }
         public static bool accDisplaySeparate
         {
             get
             {
-                return config.GetBool("AccuracyAverageTestPlugin", "Accuracy Display Separate", true, true);
+                return config.GetBool(AccuracyAverageSection, "Accuracy Display Separate", true, true);
             }
             set
             {
-                config.SetBool("AccuracyAverageTestPlugin", "Accuracy Display Separate", value);
+                config.SetBool(AccuracyAverageSection, "Accuracy Display Separate", value);
             }
         }
 
@@ -43,22 +45,22 @@ namespace TestBeatSaberPlugin
         {
             get
             {
-                return config.GetBool("AccuracyAverageTestPlugin", "Pre-hit Angle Display Both", true, true);
+                return config.GetBool(AccuracyAverageSection, "Pre-hit Angle Display Both", true, true);
             }
             set
             {
-                config.SetBool("AccuracyAverageTestPlugin", "Pre-hit Angle Display Both", value);
+                config.SetBool(AccuracyAverageSection, "Pre-hit Angle Display Both", value);
             }
         }
         public static bool prehitAngleDisplaySeparate
         {
             get
             {
-                return config.GetBool("AccuracyAverageTestPlugin", "Pre-hit Angle Display Separate", true, true);
+                return config.GetBool(AccuracyAverageSection, "Pre-hit Angle Display Separate", true, true);
             }
             set
             {
-                config.SetBool("AccuracyAverageTestPlugin", "Pre-hit Angle Display Separate", value);
+                config.SetBool(AccuracyAverageSection, "Pre-hit Angle Display Separate", value);
             }
         }
 
@@ -66,22 +68,22 @@ namespace TestBeatSaberPlugin
         {
             get
             {
-                return config.GetBool("AccuracyAverageTestPlugin", "Post-hit Angle Display Both", true, true);
+                return config.GetBool(AccuracyAverageSection, "Post-hit Angle Display Both", true, true);
             }
             set
             {
-                config.SetBool("AccuracyAverageTestPlugin", "Post-hit Angle Display Both", value);
+                config.SetBool(AccuracyAverageSection, "Post-hit Angle Display Both", value);
             }
         }
         public static bool posthitAngleDisplaySeparate
         {
             get
             {
-                return config.GetBool("AccuracyAverageTestPlugin", "Post-hit Angle Display Separate", true, true);
+                return config.GetBool(AccuracyAverageSection, "Post-hit Angle Display Separate", true, true);
             }
             set
             {
-                config.SetBool("AccuracyAverageTestPlugin", "Post-hit Angle Display Separate", value);
+                config.SetBool(AccuracyAverageSection, "Post-hit Angle Display Separate", value);
             }
         }
     }

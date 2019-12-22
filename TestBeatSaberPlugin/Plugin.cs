@@ -1,8 +1,8 @@
 ﻿using IPA;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using BS_Utils.Utilities;
 using IPALogger = IPA.Logging.Logger;
 
 namespace TestBeatSaberPlugin
@@ -32,6 +32,16 @@ namespace TestBeatSaberPlugin
         public void Init(IPALogger logger)
         {
             Logger.log = logger;
+
+            //var harmony = Harmony.HarmonyInstance.Create("com.chrislee0419.beatsaber.testplugin");
+            //harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
+
+            BSEvents.menuSceneLoadedFresh += OnMenuSceneLoadedFresh;
+        }
+
+        private void OnMenuSceneLoadedFresh()
+        {
+            UI.MainMenuViewControllerEditor.instance.Setup();
         }
 
         public void OnApplicationStart()
@@ -56,29 +66,29 @@ namespace TestBeatSaberPlugin
 
         public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
         {
-            if (!PluginConfig.enabled)
-            {
-                return;
-            }
-            else if (nextScene.name == "MenuCore")
-            {
-                if (prevScene.name == "GameCore")
-                {
-                    new GameObject("Results Viewer").AddComponent<ResultsViewer>();
-                    Logger.log.Debug("OnActiveSceneChanged from the test plugin has created a ResultsViewer object");
-                }
-            }
-            else if (nextScene.name == "GameCore")
-            {
-                new GameObject("Accuracy Lister").AddComponent<AccuracyLists>();
-                Logger.log.Debug("OnActiveSceneChanged from the test plugin has created an AccuracyLists object");
-            }
+            //if (!PluginConfig.enabled)
+            //{
+            //    return;
+            //}
+            //else if (nextScene.name == "MenuCore")
+            //{
+            //    if (prevScene.name == "GameCore")
+            //    {
+            //        new GameObject("Results Viewer").AddComponent<ResultsViewer>();
+            //        Logger.log.Debug("OnActiveSceneChanged from the test plugin has created a ResultsViewer object");
+            //    }
+            //}
+            //else if (nextScene.name == "GameCore")
+            //{
+            //    new GameObject("Accuracy Lister").AddComponent<AccuracyLists>();
+            //    Logger.log.Debug("OnActiveSceneChanged from the test plugin has created an AccuracyLists object");
+            //}
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
         {
-            if (scene.name == "MenuCore")
-                BasicUI.CreateGameplayOptionsUI();
+            //if (scene.name == "MenuCore")
+            //    BasicUI.CreateGameplayOptionsUI();
         }
 
         public void OnSceneUnloaded(Scene scene)

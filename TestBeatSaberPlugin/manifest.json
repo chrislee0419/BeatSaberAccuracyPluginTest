@@ -1,10 +1,13 @@
 ﻿{
   "$schema": "https://raw.githubusercontent.com/nike4613/ModSaber-MetadataFileSchema/master/Schema.json",
   "author": "hello",
-  "description": "Test plugin that shows hit accuracy upon finishing/failing a song.",
-  "gameVersion": "0.13.2",
+  "description": "Test plugin for testing stuff.",
+  "gameVersion": "1.6.0",
   "id": "test-accuracy-plugin",
-  "name": "TestBeatSaberPlugin",
+  "name": "Sandbox Test Plugin",
   "version": "0.0.1",
-  "features": []
+  "features": [],
+  "dependsOn": {
+    "BeatSaberMarkupLanguage": "^1.1.1"
+  }
 }

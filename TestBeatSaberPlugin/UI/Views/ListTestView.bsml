@@ -1,0 +1,14 @@
+﻿<horizontal spacing="4" child-expand-width="true" child-expand-height="true" pad="5">
+  <vertical spacing="4" child-expand-width="true" child-expand-height="true">
+    <bg bg="round-rect-panel">
+      <horizontal pad="3">
+        <text text="~topleft-text" font-size="2.5" overflow-mode="Overflow" />
+      </horizontal>
+    </bg>
+    <vertical bg="round-rect-panel" child-expand-width="true" spacing="1" pad="3">
+      <button text="Test button" font-size="3.5" />
+      <button text="Another button" font-size="3.5" />
+    </vertical>
+  </vertical>
+  <list id="test-list" expand-cell="true" list-style="Simple" select-cell="select-cell" />
+</horizontal>

@@ -1,0 +1,4 @@
+﻿<bg id="container"
+    bg="round-rect-panel"
+    size-delta-x="-10"
+    size-delta-y="-10" />

@@ -1,0 +1,10 @@
+﻿<bg>
+  <button text="Show Test View"
+          anchor-min-x="1"
+          anchor-max-x="1"
+          anchor-min-y="1"
+          anchor-max-y="1"
+          anchor-pos-x="-22"
+          anchor-pos-y="-6"
+          on-click="button-click" />
+</bg>
