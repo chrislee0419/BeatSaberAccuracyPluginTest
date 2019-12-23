@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
@@ -41,6 +42,22 @@ namespace TestBeatSaberPlugin.UI
 
         [UIValue("topleft-text")]
         private static readonly string text = "This is some <color=#FF1111>example text</color> that should appear in a <color=#3333FF>box</color>.";
+
+        // Content View 1 stuff
+        [UIValue("bool-example-value")]
+        private bool boolExampleValue = false;
+
+        [UIValue("checkbox-example-value")]
+        private bool checkboxExampleValue = true;
+
+        [UIValue("dropdown-example-value")]
+        private string dropdownExampleValue = "Example 1";
+
+        [UIValue("increment-example-value")]
+        private int incrementExampleValue = 12;
+
+        [UIValue("dropdown-example-options")]
+        private List<object> dropdownExampleOptions = new List<object>(new string[] { "Example 1", "Example 2", "Example 3" });
 #pragma warning restore CS0649
 #pragma warning restore CS0414
 
@@ -72,6 +89,55 @@ namespace TestBeatSaberPlugin.UI
             }
 
             CellWasSelected?.Invoke(_viewContents[index]);
+        }
+
+        // Content View 1 stuff
+        [UIAction("bool-example-changed")]
+        private void BoolExampleChanged(bool value)
+        {
+            Logger.log.Notice($"BoolSetting example triggered on-change action ({boolExampleValue} => {value})");
+        }
+
+        [UIAction("checkbox-example-changed")]
+        private void CheckboxExampleChanged(bool value)
+        {
+            Logger.log.Notice($"CheckboxSetting example triggered on-change action ({checkboxExampleValue} => {value})");
+        }
+
+        [UIAction("dropdown-example-changed")]
+        private void DropdownListExampleChanged(string value)
+        {
+            Logger.log.Notice($"DropdownListSetting example triggered on-change action ({dropdownExampleValue} => {value})");
+        }
+
+        [UIAction("increment-example-changed")]
+        private void IncrementExampleChanged(int value)
+        {
+            Logger.log.Notice($"IncrementSetting example triggered on-change action ({incrementExampleValue} => {value})");
+        }
+
+        [UIAction("bool-example-formatter")]
+        private string BoolExampleFormatter(bool value)
+        {
+            return value.ToString();
+        }
+
+        [UIAction("checkbox-example-formatter")]
+        private string CheckboxExampleFormatter(bool value)
+        {
+            return value.ToString();
+        }
+
+        [UIAction("dropdown-example-formatter")]
+        private string DropdownListExampleFormatter(object value)
+        {
+            return value as string;
+        }
+
+        [UIAction("increment-example-formatter")]
+        private string IncrementExampleFormatter(int value)
+        {
+            return value.ToString();
         }
     }
 

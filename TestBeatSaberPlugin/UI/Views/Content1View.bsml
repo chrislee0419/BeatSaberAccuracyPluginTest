@@ -1,3 +1,32 @@
-﻿<vertical child-align="MiddleCenter">
-  <text text="&lt;color=#FF5555&gt;Content 1 View&lt;/color&gt;" font-size="6" font-align="Center" />
+﻿<vertical size-delta-x="110" size-delta-y="70" child-expand-width="true" child-align="UpperCenter" spacing="2" pad="5">
+  <text text="&lt;color=#FF5555&gt;Content 1 View&lt;/color&gt;"
+        font-size="6"
+        min-height="12" />
+  <bool-setting text="Bool Setting Example"
+                on-change="bool-example-changed"
+                value="bool-example-value"
+                apply-on-change="true"
+                min-height="8" />
+  <checkbox text="Checkbox Example"
+            on-change="checkbox-example-changed"
+            value="checkbox-example-value"
+            apply-on-change="true"
+            min-height="8" />
+  <dropdown-list-setting text="Dropdown List Example"
+                         on-change="dropdown-example-changed"
+                         value="dropdown-example-value"
+                         options="dropdown-example-options"
+                         formatter="dropdown-example-formatter"
+                         apply-on-change="true"
+                         min-height="8" />
+  <increment-setting text="Increment Setting Example"
+                     integer-only="true"
+                     min="0"
+                     max="20"
+                     increment="2"
+                     on-change="increment-example-changed"
+                     value="increment-example-value"
+                     formatter="increment-example-formatter"
+                     apply-on-change="true"
+                     min-height="8" />
 </vertical>
