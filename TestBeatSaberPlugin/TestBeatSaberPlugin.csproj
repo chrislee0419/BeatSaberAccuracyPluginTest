@@ -109,6 +109,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultsViewer.cs" />
     <Compile Include="UI\MainMenuViewControllerEditor.cs" />
+    <Compile Include="UI\ScreenTest.cs" />
     <Compile Include="UI\TestView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +130,9 @@
     <EmbeddedResource Include="UI\Views\Content2View.bsml" />
     <EmbeddedResource Include="UI\Views\Content1View.bsml" />
     <EmbeddedResource Include="UI\Views\DisplayTestView.bsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\Views\ScreenTestView.bsml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

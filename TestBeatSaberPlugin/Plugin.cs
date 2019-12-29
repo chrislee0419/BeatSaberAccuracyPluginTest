@@ -42,6 +42,7 @@ namespace TestBeatSaberPlugin
         private void OnMenuSceneLoadedFresh()
         {
             UI.MainMenuViewControllerEditor.instance.Setup();
+            UI.ScreenTest.instance.Setup();
         }
 
         public void OnApplicationStart()

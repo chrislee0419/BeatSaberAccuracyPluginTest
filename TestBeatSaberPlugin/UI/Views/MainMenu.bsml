@@ -1,10 +1,19 @@
-﻿<bg>
+﻿<horizontal preferred-width="160"
+            preferred-height="10"
+            anchor-min-x="1"
+            anchor-min-y="1"
+            anchor-max-x="1"
+            anchor-max-y="1"
+            anchor-pos-x="-80"
+            anchor-pos-y="-5"
+            child-align="UpperRight"
+            child-expand-height="true"
+            child-control-width="true"
+            spacing="2"
+            pad="3">
   <button text="Show Test View"
-          anchor-min-x="1"
-          anchor-max-x="1"
-          anchor-min-y="1"
-          anchor-max-y="1"
-          anchor-pos-x="-22"
-          anchor-pos-y="-6"
-          on-click="button-click" />
-</bg>
+          on-click="testview-button-click" />
+  <button text="Show/Hide Screen"
+          font-size="3"
+          on-click="screen-button-click" />
+</horizontal>

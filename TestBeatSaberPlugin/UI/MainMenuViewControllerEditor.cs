@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 
@@ -11,14 +10,16 @@ namespace TestBeatSaberPlugin.UI
     {
         private TestViewFlowCoordinator _testViewFlowCoordinator;
 
+        private bool _screenShown = false;
+
         internal void Setup()
         {
             var mainMenuViewController = Resources.FindObjectsOfTypeAll<MainMenuViewController>().First();
             BSMLParser.instance.Parse(Utilities.GetResourceContent(Assembly.GetExecutingAssembly(), "TestBeatSaberPlugin.UI.Views.MainMenu.bsml"), mainMenuViewController.gameObject, this);
         }
 
-        [UIAction("button-click")]
-        private void ButtonClicked()
+        [UIAction("testview-button-click")]
+        private void ShowTestViewButtonClicked()
         {
             if (_testViewFlowCoordinator == null)
             {
@@ -27,6 +28,17 @@ namespace TestBeatSaberPlugin.UI
             }
 
             BeatSaberUI.MainFlowCoordinator.PresentFlowCoordinator(_testViewFlowCoordinator);
+        }
+
+        [UIAction("screen-button-click")]
+        private void ToggleScreenButtonClicked()
+        {
+            if (_screenShown)
+                ScreenTest.instance.HideScreen();
+            else
+                ScreenTest.instance.ShowScreen();
+
+            _screenShown = !_screenShown;
         }
     }
 }
